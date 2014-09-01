@@ -172,6 +172,12 @@ function transfer_meter_readings_step_one_form($form, &$form_state){
             #size' => '10'
         );
         
+        $form['accept_private'] = array(
+            '#type' => 'checkbox',
+            '#title' => t('I agree to the transmission and processing of my personal data'),
+            '#required' => TRUE,
+        );
+        
         $form['redirect'] = FALSE;
         return $form;
     }

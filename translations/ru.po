@@ -315,6 +315,10 @@ msgstr "Номер дома"
 msgid "Apartment number"
 msgstr "Номер квартиры"
 
+#: transfer_meter_readings.user.inc:170
+msgid "I agree to the transmission and processing of my personal data"
+msgstr "Я согласен на передачу и обработку моих персональных данных"
+
 #: transfer_meter_readings.user.inc:180;276
 msgid "An error occurred."
 msgstr "Произошла ошибка."

@@ -299,6 +299,10 @@ msgstr ""
 msgid "Apartment number"
 msgstr ""
 
+#: transfer_meter_readings.user.inc:161
+msgid "I agree to the transmission and processing of my personal data"
+msgstr ""
+
 #: transfer_meter_readings.user.inc:180;276
 msgid "An error occurred."
 msgstr ""
