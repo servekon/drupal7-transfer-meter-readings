@@ -1,0 +1,183 @@
+<?php
+/**
+ * @file transfer_meter_readings.module
+ * Adds preprocessors to the menu theming functions
+ * that will add dynamic expansion to their menus.
+ */
+global $arrFileEncode;
+$arrFileEncode=array(
+    1 => 'UTF-8',
+    2 => 'Windows-1251',
+);
+/**
+* Valid permissions for this module
+* @return array An array of valid permissions for the onthisdate module
+*/
+
+function transfer_meter_readings_permission(){
+  return array(
+    'access_transfer_meter_readings' => array(
+      'title' => t('The ability to make the counters'),
+    ),
+	'administer_transfer_meter_readings' => array(
+      'title' => t('Administer Reception Meter Readings module.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+/**
+ * Implementation of hook_menu().
+ * Adds a settings page.
+ */
+function transfer_meter_readings_menu() {
+    $menu['admin/transfer-meter-readings'] = array(
+        'title' => 'Meters readings',
+        'description' => 'View and export the readings of meters. Settings of the module.',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('transfer_meter_readings_export_form'),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'file' => 'transfer_meter_readings.admin.inc',
+    );
+
+    $menu['admin/transfer-meter-readings/readings'] = array(
+        'title' => 'Readings', 
+        'type' => MENU_DEFAULT_LOCAL_TASK, 
+        'weight' => -10,
+    );
+    
+    $menu['admin/transfer-meter-readings/readings/export'] = array(
+        'title' => 'Export of readings of the meters', 
+        'type' => MENU_DEFAULT_LOCAL_TASK, 
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'weight' => -1,
+    );
+
+    $menu['admin/transfer-meter-readings/readings/show-from-user'] = array(
+        'title' => 'Meter readings made ​​by users',
+        'page callback' => 'transfer_meter_readings_meter_reading_template',
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'file' => 'transfer_meter_readings.admin.inc',
+        'type' => MENU_LOCAL_TASK,
+        'weight' => 2,
+    );
+
+    $menu['admin/transfer-meter-readings/readings/unblock-readings'] = array(
+        'title' => 'Unblock meters reading',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('transfer_meter_readings_unblock_readings'),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'file' => 'transfer_meter_readings.admin.inc',
+        'type' => MENU_LOCAL_TASK,
+        'weight' => 3,
+    );
+
+    $menu['admin/transfer-meter-readings/unblock-single-meter/%'] = array(
+        'title' => 'Meter readings made ​​by users',
+        'page callback' => 'transfer_meter_readings_unblock_single',
+        'page arguments' => array(3),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'file' => 'transfer_meter_readings.admin.inc',
+        'type' => MENU_CALLBACK
+    );
+
+    $menu['admin/transfer-meter-readings/blocking-single-meter/%'] = array(
+        'title' => 'Meter readings made ​​by users',
+        'page callback' => 'transfer_meter_readings_blocking_single',
+        'page arguments' => array(3),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'file' => 'transfer_meter_readings.admin.inc',
+        'type' => MENU_CALLBACK
+    );
+  
+    //~ Importing
+    $menu['admin/transfer-meter-readings/import'] = array(
+        'title' => 'Import data',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('transfer_meter_readings_import_form'),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'type' => MENU_LOCAL_TASK,
+        'file' => 'transfer_meter_readings.admin.inc',
+    );
+    
+    //~ Settings
+    $menu['admin/transfer-meter-readings/settings'] = array(
+        'title' => 'Settings',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('tmr_settings_form'),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'type' => MENU_LOCAL_TASK,
+        'file' => 'transfer_meter_readings.admin.inc',
+    );
+    
+    $menu['admin/transfer-meter-readings/settings/conf'] = array(
+        'title' => 'Main settings', 
+        'type' => MENU_DEFAULT_LOCAL_TASK, 
+        'weight' => -1,
+    );
+    
+    $menu['admin/transfer-meter-readings/settings/fields'] = array(
+        'title' => 'Customize Fields',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('tmr_conf_manage_fields_form'),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'type' => MENU_LOCAL_TASK,
+        'file' => 'transfer_meter_readings.admin.inc',
+        'weight' => 1,
+    );
+    
+    $menu['admin/transfer-meter-readings/settings/fields/add'] = array(
+        'title' => 'Add field',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('tmr_conf_add_field_form'),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'type' => MENU_LOCAL_ACTION,
+        'weight' => 1,
+        'file' => 'transfer_meter_readings.admin.inc',
+    );
+
+    $menu['admin/transfer-meter-readings/settings/fields/del/%'] = array(
+        'title' => 'Delete field',
+        'page callback' => 'tmr_conf_del_field',
+        'page arguments' => array(5),
+        'access arguments' => array('administer-transfer-meter-readings'),
+        'type' => MENU_CALLBACK,
+        'weight' => 2,
+        'file' => 'transfer_meter_readings.admin.inc',
+    );
+
+    //~ User
+    $menu['guest-meter'] = array(
+        'title' => 'Meter readings',
+        'description' => 'Add the meter readings',
+        'page callback' => 'transfer_meter_readings_form',
+        'access arguments' => array('access-transfer-meter-readings'),
+        'position' => 'left',
+        'weight' => 1,
+        'file' => 'transfer_meter_readings.user.inc',
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $menu;
+}
+
+function transfer_meter_readings_theme() {
+  return array(
+    'meters_meter_reading_template' => array(
+		'template' => 'templates/admin_transfer_meter_readings',
+		'variables' => array('readings' => NULL),
+		'file' => 'transfer_meter_readings.admin.inc',
+    ),
+    'tmr_conf_manage_fields_form' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+function _tmr_isset_var(&$var, $newVal = false){
+	if(!isset($var)){
+		$var = '';
+	}
+	if($newVal and isset($var) and empty($var)){
+		$var = $newVal;
+	}
+	return $var;
+}

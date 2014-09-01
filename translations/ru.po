@@ -1,0 +1,435 @@
+# $Id$
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-09-01 21:12+0400\n"
+"PO-Revision-Date: 2014-09-01 21:12+0400\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Russian <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((((n%10)==1)&&((n%100)!=11))?(0):(((((n%10)>=2)&&((n%10)<=4))&&(((n%100)<10)||((n%100)>=20)))?(1):2));\n"
+
+#: transfer_meter_readings.admin.inc:19
+msgid "Download only the new meter reading"
+msgstr ""
+"Выгружать только новые показания "
+"счетчиков"
+
+#: transfer_meter_readings.admin.inc:21
+msgid "If the checkbox is not necessary, it will unload all the counters, these residents."
+msgstr ""
+"Если галка не стоит, то будут "
+"выгружаться все показания счетчиков, "
+"указанные жителями."
+
+#: transfer_meter_readings.admin.inc:26
+msgid "Unload counter readings"
+msgstr "Выгрузить показания счетчиков"
+
+#: transfer_meter_readings.admin.inc:49;180 transfer_meter_readings.user.inc:385 templates/admin_transfer_meter_readings.tpl.php:41
+msgid "No data."
+msgstr "Данных нет."
+
+#: transfer_meter_readings.admin.inc:53
+msgid "New"
+msgstr "Новое"
+
+#: transfer_meter_readings.admin.inc:53
+msgid "Previously unloaded"
+msgstr "Ранее выгруженный"
+
+#: transfer_meter_readings.admin.inc:152
+msgid "Are you sure you want to unlock meter readings?"
+msgstr ""
+"Вы действительно хотите "
+"разблокировать все показания "
+"счетчиков?"
+
+#: transfer_meter_readings.admin.inc:153
+msgid "After unlocking will be available to unload all the previously listed indications."
+msgstr ""
+"После разблокировки, для выгрузки "
+"станут доступны все ранее занесенные "
+"показания."
+
+#: transfer_meter_readings.admin.inc:159;821
+msgid "Yes"
+msgstr "Да"
+
+#: transfer_meter_readings.admin.inc:165;242;454;766;826
+msgid "Cancel"
+msgstr "Отменить"
+
+#: transfer_meter_readings.admin.inc:183
+msgid "Meter readings ublocked."
+msgstr "Показания счетчиков разблокированы."
+
+#: transfer_meter_readings.admin.inc:207;215;237
+msgid "Filter"
+msgstr "Фильтр"
+
+#: transfer_meter_readings.admin.inc:217;266 transfer_meter_readings.user.inc:169;204
+msgid "Personal account number"
+msgstr "Номер ЛС"
+
+#: transfer_meter_readings.admin.inc:218
+msgid "Name of meter"
+msgstr "Имя счетчика"
+
+#: transfer_meter_readings.admin.inc:219
+msgid "Only new meter readings"
+msgstr "Только новые показания счетчиков"
+
+#: transfer_meter_readings.admin.inc:227
+msgid "Search"
+msgstr "Поиск"
+
+#: transfer_meter_readings.admin.inc:267
+msgid "Home address"
+msgstr "Адрес"
+
+#: transfer_meter_readings.admin.inc:268
+msgid "Name"
+msgstr "Имя"
+
+#: transfer_meter_readings.admin.inc:269 transfer_meter_readings.user.inc:204
+msgid "Meter number"
+msgstr "Номер счетчика"
+
+#: transfer_meter_readings.admin.inc:270 transfer_meter_readings.user.inc:204
+msgid "Counter Name"
+msgstr "Имя счетчика"
+
+#: transfer_meter_readings.admin.inc:271 transfer_meter_readings.user.inc:204
+msgid "Counter type"
+msgstr "Тип счетчика"
+
+#: transfer_meter_readings.admin.inc:272 transfer_meter_readings.user.inc:204
+msgid "Previous reading"
+msgstr "Предыдущее показание"
+
+#: transfer_meter_readings.admin.inc:273 transfer_meter_readings.user.inc:204
+msgid "New indications"
+msgstr "Новые показания"
+
+#: transfer_meter_readings.admin.inc:325;332
+msgid "Unblock"
+msgstr "Разблокировать"
+
+#: transfer_meter_readings.admin.inc:327
+msgid "For user"
+msgstr "Для жителя"
+
+#: transfer_meter_readings.admin.inc:327
+msgid "For re-export"
+msgstr "Для реэкспорта"
+
+#: transfer_meter_readings.admin.inc:352
+msgid "Block up"
+msgstr "Блокировать"
+
+#: transfer_meter_readings.admin.inc:434
+msgid "Choose a file"
+msgstr "Выберите файл"
+
+#: transfer_meter_readings.admin.inc:441
+msgid "Re-create a temporary table"
+msgstr "Пересоздать временную таблицу"
+
+#: transfer_meter_readings.admin.inc:448
+msgid "Save and continue"
+msgstr "Сохранить и продолжить"
+
+#: transfer_meter_readings.admin.inc:520
+msgid "When you create a temporary table, an error occurred."
+msgstr "При создании временной таблицы произошла ошибка."
+
+#: transfer_meter_readings.admin.inc:557
+msgid "Import complete."
+msgstr "Импорт завершен успешно."
+
+#: transfer_meter_readings.admin.inc:578
+msgid "Filling handbook addresses successful."
+msgstr ""
+"Заполнение справочника адресов "
+"прошло успешно."
+
+#: transfer_meter_readings.admin.inc:611
+msgid "Delete"
+msgstr "Удалить"
+
+#: transfer_meter_readings.admin.inc:615;655;754
+msgid "Weight"
+msgstr "Вес"
+
+#: transfer_meter_readings.admin.inc:624
+msgid "Save settings"
+msgstr "Сохранить настройки"
+
+#: transfer_meter_readings.admin.inc:655
+msgid "Field of user table"
+msgstr "Поле из таблицы пользователей"
+
+#: transfer_meter_readings.admin.inc:655;747
+msgid "Title"
+msgstr "Заголовок"
+
+#: transfer_meter_readings.admin.inc:655
+msgid "Actions"
+msgstr "Действия"
+
+#: transfer_meter_readings.admin.inc:664
+msgid "No fields."
+msgstr "Поля еще не добавлены."
+
+#: transfer_meter_readings.admin.inc:729
+msgid "No available fields."
+msgstr "Доступных полей нет."
+
+#: transfer_meter_readings.admin.inc:725;790;856
+msgid "Error"
+msgstr "Ошибка"
+
+#: transfer_meter_readings.admin.inc:740
+msgid "Field of main data table"
+msgstr "Поле таблицы с основными данными"
+
+#: transfer_meter_readings.admin.inc:762 transfer_meter_readings.module:131
+msgid "Add field"
+msgstr "Добавить поле"
+
+#: transfer_meter_readings.admin.inc:786
+msgid "Field added."
+msgstr "Поле добавлено."
+
+#: transfer_meter_readings.admin.inc:816
+msgid "Do you want to remove a field \"%field\"?"
+msgstr ""
+"Вы действительно хотите удалить поле "
+"\"%field\"?"
+
+#: transfer_meter_readings.admin.inc:833
+msgid "Field not found."
+msgstr "Поле не найдено."
+
+#: transfer_meter_readings.admin.inc:852
+msgid "Field deleted."
+msgstr "Поле удалено."
+
+#: transfer_meter_readings.admin.inc:872
+msgid "Input settings"
+msgstr "Настройки ввода показаний"
+
+#: transfer_meter_readings.admin.inc:881
+msgid "The maximum possible difference between the previous and the current counter value"
+msgstr ""
+"Максимально возможная разница между "
+"предыдущим и текущим показанием "
+"счетчика"
+
+#: transfer_meter_readings.admin.inc:882
+msgid "Set \"0\" to not use validation volume difference between the current and previous meter readings"
+msgstr ""
+"Поставьте значение \"0\" чтобы не "
+"использовать проверку разницы "
+"объемов между текущими и предыдущими "
+"показаниями счетчика"
+
+#: transfer_meter_readings.admin.inc:889
+msgid "Round meter readings to the nearest whole number"
+msgstr ""
+"Округлять показания счетчиков до "
+"целого числа"
+
+#: transfer_meter_readings.admin.inc:896
+msgid "Import settings"
+msgstr "Настройки импорта"
+
+#: transfer_meter_readings.admin.inc:905
+msgid "The field separator"
+msgstr "Разделитель полей"
+
+#: transfer_meter_readings.admin.inc:921
+msgid "The fields are enclosed in"
+msgstr "Поля заключены в"
+
+#: transfer_meter_readings.admin.inc:925
+msgid "Single quote"
+msgstr "Одинарная кавычка"
+
+#: transfer_meter_readings.admin.inc:926
+msgid "Double quote"
+msgstr "Двойная кавычка"
+
+#: transfer_meter_readings.admin.inc:934
+msgid "The escape character"
+msgstr "Символ экранирования"
+
+#: transfer_meter_readings.admin.inc:945
+msgid "Line separator"
+msgstr "Символ разделения строк"
+
+#: transfer_meter_readings.admin.inc:958
+msgid "Export settings"
+msgstr "Настройки экспорта"
+
+#: transfer_meter_readings.admin.inc:967
+msgid "Add in the first row the name of columns"
+msgstr ""
+"Добавлять в первую строку файла "
+"названия столбцов"
+
+#: transfer_meter_readings.admin.inc:974
+msgid "Translate column names"
+msgstr "Переводить названия столбцов"
+
+#: transfer_meter_readings.admin.inc:989
+msgid "File encoding"
+msgstr "Кодировка файла"
+
+#: transfer_meter_readings.user.inc:39
+msgid "Prev"
+msgstr "Назад"
+
+#: transfer_meter_readings.user.inc:50
+msgid "Next"
+msgstr "Далее"
+
+#: transfer_meter_readings.user.inc:115
+msgid "Specified account does not exist."
+msgstr ""
+"Указанный номер ЛС не существует или "
+"не соответствует выбранному адресу."
+
+#: transfer_meter_readings.user.inc:138
+msgid "Street"
+msgstr "Улица"
+
+#: transfer_meter_readings.user.inc:152
+msgid "Number of house"
+msgstr "Номер дома"
+
+#: transfer_meter_readings.user.inc:161
+msgid "Apartment number"
+msgstr "Номер квартиры"
+
+#: transfer_meter_readings.user.inc:180;276
+msgid "An error occurred."
+msgstr "Произошла ошибка."
+
+#: transfer_meter_readings.user.inc:264
+msgid "Make statements"
+msgstr "Внести показания"
+
+#: transfer_meter_readings.user.inc:270
+msgid "All previously entered readings have been transferred to the processing."
+msgstr ""
+"Все ранее введенные показания были "
+"переданы на обработку."
+
+#: transfer_meter_readings.user.inc:285;355
+msgid "Meter readings were not included."
+msgstr ""
+"При внесении новых показаний "
+"произошла ошибка."
+
+#: transfer_meter_readings.user.inc:290
+msgid "Field %field can be only digits and dot."
+msgstr ""
+"Поле %field может содержать только цифры "
+"и знак точки."
+
+#: transfer_meter_readings.user.inc:290
+msgid "''New indications''"
+msgstr "''Новые показания''"
+
+#: transfer_meter_readings.user.inc:293
+msgid "Current counter value is less than the previous."
+msgstr ""
+"Текущее показание счетчика меньше "
+"предыдущего."
+
+#: transfer_meter_readings.user.inc:297
+msgid "The difference between the previous and the current counter value is too high."
+msgstr ""
+"Разница между текущим и предыдущим "
+"показанием счетчика слишком велика."
+
+#: transfer_meter_readings.user.inc:351
+msgid "Meter readings were made."
+msgstr "Новые показания были внесены."
+
+#: transfer_meter_readings.module:20
+msgid "The ability to make the counters"
+msgstr "Разрешить передавать показания"
+
+#: transfer_meter_readings.module:23
+msgid "Administer Reception Meter Readings module."
+msgstr "Администрирование модуля Reception Meter Readings."
+
+#: transfer_meter_readings.module:34
+msgid "Meters readings"
+msgstr "Показания счетчиков"
+
+#: transfer_meter_readings.module:35
+msgid "View and export the readings of meters. Settings of the module."
+msgstr "Просмотр и экспорт показаний счетчиков. Настройки модуля."
+
+#: transfer_meter_readings.module:43
+msgid "Readings"
+msgstr "Показания"
+
+#: transfer_meter_readings.module:49
+msgid "Export of readings of the meters"
+msgstr "Экспорт показаний счетчиков"
+
+#: transfer_meter_readings.module:56;77;86
+msgid "Meter readings made ​​by users"
+msgstr "Показания внесенные пользователями"
+
+#: transfer_meter_readings.module:66
+msgid "Unblock meters reading"
+msgstr "Разблокировать показания счетчиков"
+
+#: transfer_meter_readings.module:96
+msgid "Import data"
+msgstr "Импорт данных"
+
+#: transfer_meter_readings.module:106 transfer_meter_readings.install:91
+msgid "Settings"
+msgstr "Настройки"
+
+#: transfer_meter_readings.module:115
+msgid "Main settings"
+msgstr "Основные настройки"
+
+#: transfer_meter_readings.module:121
+msgid "Customize Fields"
+msgstr "Настройка полей"
+
+#: transfer_meter_readings.module:141
+msgid "Delete field"
+msgstr "Удалить поле"
+
+#: transfer_meter_readings.module:152
+msgid "Meter readings"
+msgstr "Показания счетчиков"
+
+#: transfer_meter_readings.module:153
+msgid "Add the meter readings."
+msgstr "Добавить показания счетчика"
+
+#: transfer_meter_readings.install:91
+msgid "You need to configure the fields of the imported file and configure format of files for import / export. Go to the "
+msgstr "Вам необходимо настроить конфигурацию полей импортируемого файла и выполнить настройку форматов файлов для импорта/экспорта."
+
+#: transfer_meter_readings.info:0
+msgid "Transfer of meter readings"
+msgstr "Передача показаний счетчиков"
+
+#: transfer_meter_readings.info:0
+msgid "Transfer of meter readings for anonymous users."
+msgstr "Передача показаний счетчиков анонимными пользователями."
+

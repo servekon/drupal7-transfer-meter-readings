@@ -1,0 +1,14 @@
+.meter-block, .meter-unblock, .meter-block-for-user{
+	padding:3px;
+	border:solid 1px #dddddd;
+	color:#ffffff;
+}
+.meter-block{
+	background-color:#990000;
+}
+.meter-unblock{
+	background-color:#006600;
+}
+.meter-block-for-user{
+	background-color:#336699;
+}
