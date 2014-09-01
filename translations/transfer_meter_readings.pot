@@ -1,0 +1,409 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  transfer_meter_readings.admin.inc,v 1.5.2.3 2008/11/08 17:35:12 arancaytar
+#  transfer_meter_readings.user.inc: n/a
+#  templates/admin_transfer_meter_readings.tpl.php: n/a
+#  transfer_meter_readings.module: n/a
+#  transfer_meter_readings.install: n/a
+#  transfer_meter_readings.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2014-09-01 22:40+0400\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: transfer_meter_readings.admin.inc:19
+msgid "Download only the new meter reading"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:21
+msgid "If the checkbox is not necessary, it will unload all the counters, these residents."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:26
+msgid "Unload counter readings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:49;180 transfer_meter_readings.user.inc:385 templates/admin_transfer_meter_readings.tpl.php:41
+msgid "No data."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:53
+msgid "New"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:53
+msgid "Previously unloaded"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:152
+msgid "Are you sure you want to unlock meter readings?"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:153
+msgid "After unlocking will be available to unload all the previously listed indications."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:159;827
+msgid "Yes"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:165;242;455;772;832;844
+msgid "Cancel"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:183
+msgid "Meter readings ublocked."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:207;215;237
+msgid "Filter"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:217;266 transfer_meter_readings.user.inc:169;204
+msgid "Personal account number"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:218
+msgid "Name of meter"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:219
+msgid "Only new meter readings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:227
+msgid "Search"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:267
+msgid "Home address"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:268
+msgid "Name"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:269 transfer_meter_readings.user.inc:204
+msgid "Meter number"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:270 transfer_meter_readings.user.inc:204
+msgid "Counter Name"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:271 transfer_meter_readings.user.inc:204
+msgid "Counter type"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:272 transfer_meter_readings.user.inc:204
+msgid "Previous reading"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:273 transfer_meter_readings.user.inc:204
+msgid "New indications"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:325;332
+msgid "Unblock"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:327
+msgid "For user"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:327
+msgid "For re-export"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:352
+msgid "Block up"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:434
+msgid "Choose a file"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:441
+msgid "Re-create a temporary table"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:449
+msgid "Save and continue"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:521
+msgid "When you create a temporary table, an error occurred."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:558
+msgid "Import complete."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:579
+msgid "Filling handbook addresses successful."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:612
+msgid "Delete"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:616;656;760
+msgid "Weight"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:625
+msgid "Save settings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:656
+msgid "Field of user table"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:656;753
+msgid "Title"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:656
+msgid "Actions"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:665
+msgid "No fields."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:726;796;862
+msgid "Error"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:730
+msgid "No available fields."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:746
+msgid "Field of main data table"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:768 transfer_meter_readings.module:129
+msgid "Add field"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:792
+msgid "Field added."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:822
+msgid "Do you want to remove a field \"%field\"?"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:839
+msgid "Field not found."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:858
+msgid "Field deleted."
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:878
+msgid "Input settings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:887
+msgid "The maximum possible difference between the previous and the current counter value"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:888
+msgid "Set \"0\" to not use validation volume difference between the current and previous meter readings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:895
+msgid "Round meter readings to the nearest whole number"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:902
+msgid "Import settings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:911
+msgid "The field separator"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:927
+msgid "The fields are enclosed in"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:931
+msgid "Single quote"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:932
+msgid "Double quote"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:940
+msgid "The escape character"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:951
+msgid "Line separator"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:964
+msgid "Export settings"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:973
+msgid "Add in the first row the name of columns"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:980
+msgid "Translate column names"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:995
+msgid "File encoding"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:39
+msgid "Prev"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:50
+msgid "Next"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:115
+msgid "Specified account does not exist."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:138
+msgid "Street"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:152
+msgid "Number of house"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:161
+msgid "Apartment number"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:180;276
+msgid "An error occurred."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:264
+msgid "Make statements"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:270
+msgid "All previously entered readings have been transferred to the processing."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:285;355
+msgid "Meter readings were not included."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:290
+msgid "Field %field can be only digits and dot."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:290
+msgid "''New indications''"
+msgstr ""
+
+#: transfer_meter_readings.user.inc:293
+msgid "Current counter value is less than the previous."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:297
+msgid "The difference between the previous and the current counter value is too high."
+msgstr ""
+
+#: transfer_meter_readings.user.inc:351
+msgid "Meter readings were made."
+msgstr ""
+
+#: transfer_meter_readings.module:20
+msgid "The ability to make the counters"
+msgstr ""
+
+#: transfer_meter_readings.module:23
+msgid "Administer Reception Meter Readings module."
+msgstr ""
+
+#: transfer_meter_readings.module:34
+msgid "Meters readings"
+msgstr ""
+
+#: transfer_meter_readings.module:35
+msgid "View and export the readings of meters. Settings of the module."
+msgstr ""
+
+#: transfer_meter_readings.module:43
+msgid "Readings"
+msgstr ""
+
+#: transfer_meter_readings.module:49
+msgid "Export of readings of the meters"
+msgstr ""
+
+#: transfer_meter_readings.module:56;75;84
+msgid "Meter readings made ​​by users"
+msgstr ""
+
+#: transfer_meter_readings.module:65
+msgid "Unblock meters reading"
+msgstr ""
+
+#: transfer_meter_readings.module:94
+msgid "Import data"
+msgstr ""
+
+#: transfer_meter_readings.module:104 transfer_meter_readings.install:91
+msgid "Settings"
+msgstr ""
+
+#: transfer_meter_readings.module:113
+msgid "Main settings"
+msgstr ""
+
+#: transfer_meter_readings.module:119
+msgid "Customize Fields"
+msgstr ""
+
+#: transfer_meter_readings.module:139
+msgid "Delete field"
+msgstr ""
+
+#: transfer_meter_readings.module:150
+msgid "Meter readings"
+msgstr ""
+
+#: transfer_meter_readings.module:151
+msgid "Add the meter readings"
+msgstr ""
+
+#: transfer_meter_readings.install:91
+msgid "You need to configure the fields of the imported file and configure format of files for import / export. Go to the "
+msgstr ""
+
+#: transfer_meter_readings.info:0
+msgid "Transfer of meter readings"
+msgstr ""
+
+#: transfer_meter_readings.info:0
+msgid "Transfer of meter readings for anonymous users."
+msgstr ""
+
