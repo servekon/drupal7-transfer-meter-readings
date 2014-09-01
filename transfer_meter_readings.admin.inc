@@ -653,7 +653,7 @@ function theme_tmr_conf_manage_fields_form($variables) {
     );
   }
 
-  $header = array(t('Field of user table'), t('Title'),  t('Actions'), t('Weight'));
+  $header = array(t('Field of main data table'), t('Title'),  t('Actions'), t('Weight'));
 
   $table_id = 'rmr-fields-table';
 
@@ -918,10 +918,9 @@ function tmr_settings_form($form, &$form_state){
 			3 => '|',
 			4 => '^',
 		),
-		//'#description' => t('Possible values: ').l('[TAB]', '#', array('attributes'=>array('onclick'=>'javascript:jQuery("#edit-bur-fields-terminated").val("\\\\t"); return false;'))),
 		'#required' => TRUE,
 	);
-	//ESCAPED
+	//~ ESCAPED
 	$form['tmr_import_fieldset']['tmr_fields_enclosed']=array(
 		'#type' => 'select',
 		'#title' => t('The fields are enclosed in'),
@@ -931,7 +930,6 @@ function tmr_settings_form($form, &$form_state){
 			0 => '\' ('.t('Single quote').')',
 			1 => '" ('.t('Double quote').')',
 		),
-		//'#description' => t('Set zero if empty'),
 		'#required' => TRUE,
 	);
 	
