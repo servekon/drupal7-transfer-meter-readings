@@ -11,10 +11,10 @@
 
 function transfer_meter_readings_permission(){
   return array(
-    'access_transfer_meter_readings' => array(
+    'access-transfer-meter-readings' => array(
       'title' => t('The ability to make the counters'),
     ),
-    'administer_transfer_meter_readings' => array(
+    'administer-transfer-meter-readings' => array(
       'title' => t('Administer Reception Meter Readings module.'),
       'restrict access' => TRUE,
     ),
