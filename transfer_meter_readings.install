@@ -3,92 +3,92 @@
  * Implementation of hook_install()
  */
 function transfer_meter_readings_install() {
-    $values = array(
-		array(
-			'f_title' => 'Account',
-			'f_user_field' => 'md_account',
-			'f_weight' => 0,
-		),
-		array(
-			'f_title' => 'Key of street',
-			'f_user_field' => 'md_st_key',
-			'f_weight' => 1,
-		),
-		array(
-			'f_title' => 'Name of street',
-			'f_user_field' => 'md_st_name',
-			'f_weight' => 2,
-		),
-		array(
-			'f_title' => 'House key',
-			'f_user_field' => 'md_house_key',
-			'f_weight' => 3,
-		),
-		array(
-			'f_title' => 'House number',
-			'f_user_field' => 'md_house_num',
-			'f_weight' => 4,
-		),
-		array(
-			'f_title' => 'Flat number',
-			'f_user_field' => 'md_flat',
-			'f_weight' => 5,
-		),
-		array(
-			'f_title' => 'Consecutive number of meter',
-			'f_user_field' => 'md_met_num',
-			'f_weight' => 7,
-		),
-		array(
-			'f_title' => 'Name of meter',
-			'f_user_field' => 'md_met_name',
-			'f_weight' => 8,
-		),
-		array(
-			'f_title' => 'Type of meter',
-			'f_user_field' => 'md_met_type',
-			'f_weight' => 9,
-		),
-		array(
-			'f_title' => 'Current value of meter reading',
-			'f_user_field' => 'md_met_val',
-			'f_weight' => 10,
-		),
-		array(
-			'f_title' => 'Month accounting',
-			'f_user_field' => 'md_month',
-			'f_weight' => 11,
-		),
-	);
-	
-	$query = db_insert('tmr_fields_table')->fields(array('f_title','f_user_field','f_weight','date_change'));
-	
-	foreach($values as $val){
-		$val['date_change'] = REQUEST_TIME;
-        $query->values($val);
-	}
-	
-	$query->execute();
+  $values = array(
+    array(
+      'f_title' => 'Account',
+      'f_user_field' => 'md_account',
+      'f_weight' => 0,
+    ),
+    array(
+      'f_title' => 'Key of street',
+      'f_user_field' => 'md_st_key',
+      'f_weight' => 1,
+    ),
+    array(
+      'f_title' => 'Name of street',
+      'f_user_field' => 'md_st_name',
+      'f_weight' => 2,
+    ),
+    array(
+      'f_title' => 'House key',
+      'f_user_field' => 'md_house_key',
+      'f_weight' => 3,
+    ),
+    array(
+      'f_title' => 'House number',
+      'f_user_field' => 'md_house_num',
+      'f_weight' => 4,
+    ),
+    array(
+      'f_title' => 'Flat number',
+      'f_user_field' => 'md_flat',
+      'f_weight' => 5,
+    ),
+    array(
+      'f_title' => 'Consecutive number of meter',
+      'f_user_field' => 'md_met_num',
+      'f_weight' => 7,
+    ),
+    array(
+      'f_title' => 'Name of meter',
+      'f_user_field' => 'md_met_name',
+      'f_weight' => 8,
+    ),
+    array(
+      'f_title' => 'Type of meter',
+      'f_user_field' => 'md_met_type',
+      'f_weight' => 9,
+    ),
+    array(
+      'f_title' => 'Current value of meter reading',
+      'f_user_field' => 'md_met_val',
+      'f_weight' => 10,
+    ),
+    array(
+      'f_title' => 'Month accounting',
+      'f_user_field' => 'md_month',
+      'f_weight' => 11,
+    ),
+  );
+  
+  $query = db_insert('tmr_fields_table')->fields(array('f_title','f_user_field','f_weight','date_change'));
+  
+  foreach($values as $val){
+    $val['date_change'] = REQUEST_TIME;
+    $query->values($val);
+  }
+  
+  $query->execute();
 }
 
 /**
  * Implementation of hook_uninstall()
  */
 function transfer_meter_readings_uninstall() {
-    if(db_table_exists('tmr_import_tmp')){
-		db_drop_table('tmr_import_tmp');
-	}
-    
-    db_delete('variable')
-    ->condition('name', '%' . db_like('tmr_') . '%', 'LIKE')
-    ->execute();
+  if(db_table_exists('tmr_import_tmp')){
+    db_drop_table('tmr_import_tmp');
+  }
+  
+  db_delete('variable')
+  ->condition('name', '%' . db_like('tmr_') . '%', 'LIKE')
+  ->execute();
 }
 
 /**
  * Implementation of hook_enable()
  */
 function transfer_meter_readings_enable(){
-    drupal_set_message(t('You need to configure the fields of the imported file and configure format of files for import / export. Go to the ').l(t('Settings'), 'admin/transfer-meter-readings/settings').'.');
+  drupal_set_message(t('You need to configure the fields of the imported file and configure format of files for import / export. Go to the ').l(t('Settings'), 'admin/transfer-meter-readings/settings').'.');
 }
 
 
@@ -98,314 +98,314 @@ function transfer_meter_readings_enable(){
  */
  
 function transfer_meter_readings_schema() {
-	$schema['tmr_main_data'] = array(
-        'fields' => array(
-            'md_id' => array(
-                'type' => 'serial',
-                'size' => 'big',
-                'not null' => TRUE, 
-            ),
-			'md_order_id' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => FALSE, 
-                'description'=> "Number the receipt",
-            ),
-            'md_month' => array(
-                'type' => 'datetime',
-                'mysql_type' => 'date',
-                'not null' => TRUE,
-                'description'=> "Month accounting",
-            ),
-            'md_account' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 50, 
-                'description'=> "Number of personal account",
-            ),
-			'md_st_key' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "Street key",
-            ),
-			'md_st_name' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Street name",
-            ),
-			'md_house_key' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "House key",
-            ),
-			'md_house_num' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "House number",
-            ),
-			'md_flat' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Flat number",
-            ),
-			'md_name' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => FALSE,
-                'length' => 255,
-                'description'=> "Family, Name and Surname person",
-            ),
-            'md_met_num' => array(
-                'type' => 'int',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'description'=> "Consecutive number of meter",
-            ),
-            'md_met_name' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Name of meter",
-            ),
-			'md_met_type' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Type of meter",
-            ),
-            'md_met_val' => array(
-                'type' => 'float',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'description'=> "Current value of meter reading",
-            ),
-			'date_change' => array(
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'description'=> "The Unix timestamp the date of change",
-            ),
-        ),
-        'indexes' => array(
-            'md_order_id'=>array('md_order_id'),
-            'md_account'=>array('md_account'),
-            'md_st_key'=>array('md_st_key'),
-            'md_house_key'=>array('md_house_key'),
-            'md_met_num'=>array('md_met_num'),
-        ),
-		'primary key' => array('md_id')
-    );
-    
-    //~ For new meter value
-	$schema['tmr_new_readings'] = array(
-        'fields' => array(
-            'nr_id' => array(
-                'type' => 'serial',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "New meter reading ID",
-            ),
-            'nr_account' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 50, 
-                'description'=> "Account Number",
-            ),
-			'nr_order_id' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE,
-                'description'=> "Order number",
-            ),
-            'nr_month' => array(
-                'type' => 'datetime',
-                'mysql_type' => 'date',
-                'not null' => TRUE,
-                'description'=> "Month accounting",
-            ),
-            'nr_st_key' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "Street key",
-            ),
-            'nr_house_key' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "House key",
-            ),
-            'nr_flat' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Flat number",
-            ),
-            'nr_met_num' => array(
-                'type' => 'int',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'description'=> "Consecutive number",
-            ),
-            'nr_met_name' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Name meter",
-            ),
-			'nr_met_type' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Type of meter",
-            ),
-            'nr_met_val' => array(
-                'type' => 'float',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'description'=> "Previous counter value at the time of meter reading",
-            ),
-			'nr_met_new_val' => array(
-                'type' => 'float',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'description'=> "New value of meter reading",
-            ),
-			'nr_block' => array(
-                'type' => 'int',
-                'size' => 'normal',
-                'not null' => TRUE, 
-                'description'=> "Block status. 0 - unblocked. 1 - blocked for the user, but avaliable for export. 2 - blocked for the user and for export.",
-            ),
-			'nr_ins_date' => array(
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'description'=> "Date insert of meter reading, unix timestamp",
-            ),
-			'date_change' => array(
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'description'=> "The Unix timestamp the date of change",
-            ),
-        ),
-        'indexes' => array(
-            'nr_account'=>array('nr_account'),
-            'nr_order_id'=>array('nr_order_id'),
-            'nr_st_key'=>array('nr_st_key'),
-            'nr_house_key'=>array('nr_house_key'),
-            'nr_met_num'=>array('nr_met_num'),
-            'nr_block'=>array('nr_block'),
-            'nr_met_val'=>array('nr_block'),
-        ),
-        'primary key' => array('nr_id')
-    );
-	
-    $schema['tmr_handbook_housing_stock'] = array(
-        'fields' => array(
-            'hhs_id' => array(
-                'type' => 'serial',
-                'size' => 'big',
-                'not null' => TRUE, 
-            ),
-			'hhs_st_key' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "Street key",
-            ),
-			'hhs_st_name' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "Street name",
-            ),
-			'hhs_house_key' => array(
-                'type' => 'int',
-                'size' => 'big',
-                'not null' => TRUE, 
-                'description'=> "House key",
-            ),
-			'hhs_hs_house' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 255,
-                'description'=> "House number",
-            ),
-			'date_change' => array(
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'description'=> "The Unix timestamp the date of change",
-            ),
-        ),
-        'indexes' => array(
-            'hhs_st_key'=>array('hhs_st_key'),
-            'hhs_house_key'=>array('hhs_house_key'),
-            'hhs_st_name'=>array('hhs_st_name'),
-            'hhs_hs_house'=>array('hhs_hs_house'),
-        ),
-		'primary key' => array('hhs_id')
-    );
-    
-    $schema['tmr_fields_table'] = array(
-		'fields' => array(
-			'f_id' => array(
-                'type' => 'serial',
-                'size' => 'big',
-                'not null' => TRUE, 
-				'description'=> "Field ID",
-            ),
-			'f_title' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 50, 
-                'description'=> "Human-friendly title",
-            ),
-			'f_user_field' => array(
-                'type' => 'varchar',
-                'size' => 'normal',
-                'not null' => TRUE,
-                'length' => 50, 
-				'description'=> "The field of conformance to the field in the tmr_main_data table",
-            ),
-			'f_weight' => array(
-                'type' => 'int',
-                'size' => 'small',
-                'not null' => TRUE,
-				'description'=> "The serial number of the field",
-            ),
-			'date_change' => array(
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'description'=> "The Unix timestamp the date of change",
-            ),
-		),
-		'indexes' => array(
-            'f_weight'=>array('f_weight'),
-        ),
-		'primary key' => array('f_id')
-	);
-    
-	return $schema;
+  $schema['tmr_main_data'] = array(
+    'fields' => array(
+      'md_id' => array(
+        'type' => 'serial',
+        'size' => 'big',
+        'not null' => TRUE, 
+      ),
+      'md_order_id' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => FALSE, 
+        'description'=> "Number the receipt",
+      ),
+      'md_month' => array(
+        'type' => 'datetime',
+        'mysql_type' => 'date',
+        'not null' => TRUE,
+        'description'=> "Month accounting",
+      ),
+      'md_account' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 50, 
+        'description'=> "Number of personal account",
+      ),
+      'md_st_key' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "Street key",
+      ),
+      'md_st_name' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Street name",
+      ),
+      'md_house_key' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "House key",
+      ),
+      'md_house_num' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "House number",
+      ),
+      'md_flat' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Flat number",
+      ),
+      'md_name' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => FALSE,
+        'length' => 255,
+        'description'=> "Family, Name and Surname person",
+      ),
+      'md_met_num' => array(
+        'type' => 'int',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'description'=> "Consecutive number of meter",
+      ),
+      'md_met_name' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Name of meter",
+      ),
+      'md_met_type' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Type of meter",
+      ),
+      'md_met_val' => array(
+        'type' => 'float',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'description'=> "Current value of meter reading",
+      ),
+      'date_change' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description'=> "The Unix timestamp the date of change",
+      ),
+    ),
+    'indexes' => array(
+      'md_order_id'=>array('md_order_id'),
+      'md_account'=>array('md_account'),
+      'md_st_key'=>array('md_st_key'),
+      'md_house_key'=>array('md_house_key'),
+      'md_met_num'=>array('md_met_num'),
+    ),
+    'primary key' => array('md_id')
+  );
+  
+  //~ For new meter value
+  $schema['tmr_new_readings'] = array(
+    'fields' => array(
+      'nr_id' => array(
+        'type' => 'serial',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "New meter reading ID",
+      ),
+      'nr_account' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 50, 
+        'description'=> "Account Number",
+      ),
+      'nr_order_id' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE,
+        'description'=> "Order number",
+      ),
+      'nr_month' => array(
+        'type' => 'datetime',
+        'mysql_type' => 'date',
+        'not null' => TRUE,
+        'description'=> "Month accounting",
+      ),
+      'nr_st_key' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "Street key",
+      ),
+      'nr_house_key' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "House key",
+      ),
+      'nr_flat' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Flat number",
+      ),
+      'nr_met_num' => array(
+        'type' => 'int',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'description'=> "Consecutive number",
+      ),
+      'nr_met_name' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Name meter",
+      ),
+      'nr_met_type' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Type of meter",
+      ),
+      'nr_met_val' => array(
+        'type' => 'float',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'description'=> "Previous counter value at the time of meter reading",
+      ),
+      'nr_met_new_val' => array(
+        'type' => 'float',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'description'=> "New value of meter reading",
+      ),
+      'nr_block' => array(
+        'type' => 'int',
+        'size' => 'normal',
+        'not null' => TRUE, 
+        'description'=> "Block status. 0 - unblocked. 1 - blocked for the user, but avaliable for export. 2 - blocked for the user and for export.",
+      ),
+      'nr_ins_date' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description'=> "Date insert of meter reading, unix timestamp",
+      ),
+      'date_change' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description'=> "The Unix timestamp the date of change",
+      ),
+    ),
+    'indexes' => array(
+      'nr_account'=>array('nr_account'),
+      'nr_order_id'=>array('nr_order_id'),
+      'nr_st_key'=>array('nr_st_key'),
+      'nr_house_key'=>array('nr_house_key'),
+      'nr_met_num'=>array('nr_met_num'),
+      'nr_block'=>array('nr_block'),
+      'nr_met_val'=>array('nr_block'),
+    ),
+    'primary key' => array('nr_id')
+  );
+  
+  $schema['tmr_handbook_housing_stock'] = array(
+    'fields' => array(
+      'hhs_id' => array(
+        'type' => 'serial',
+        'size' => 'big',
+        'not null' => TRUE, 
+      ),
+      'hhs_st_key' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "Street key",
+      ),
+      'hhs_st_name' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "Street name",
+      ),
+      'hhs_house_key' => array(
+        'type' => 'int',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "House key",
+      ),
+      'hhs_hs_house' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 255,
+        'description'=> "House number",
+      ),
+      'date_change' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description'=> "The Unix timestamp the date of change",
+      ),
+    ),
+    'indexes' => array(
+      'hhs_st_key'=>array('hhs_st_key'),
+      'hhs_house_key'=>array('hhs_house_key'),
+      'hhs_st_name'=>array('hhs_st_name'),
+      'hhs_hs_house'=>array('hhs_hs_house'),
+    ),
+    'primary key' => array('hhs_id')
+  );
+  
+  $schema['tmr_fields_table'] = array(
+    'fields' => array(
+      'f_id' => array(
+        'type' => 'serial',
+        'size' => 'big',
+        'not null' => TRUE, 
+        'description'=> "Field ID",
+      ),
+      'f_title' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 50, 
+        'description'=> "Human-friendly title",
+      ),
+      'f_user_field' => array(
+        'type' => 'varchar',
+        'size' => 'normal',
+        'not null' => TRUE,
+        'length' => 50, 
+        'description'=> "The field of conformance to the field in the tmr_main_data table",
+      ),
+      'f_weight' => array(
+        'type' => 'int',
+        'size' => 'small',
+        'not null' => TRUE,
+        'description'=> "The serial number of the field",
+      ),
+      'date_change' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description'=> "The Unix timestamp the date of change",
+      ),
+    ),
+    'indexes' => array(
+      'f_weight'=>array('f_weight'),
+    ),
+    'primary key' => array('f_id')
+  );
+  
+  return $schema;
 }
