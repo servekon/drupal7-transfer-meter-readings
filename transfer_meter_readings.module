@@ -4,11 +4,6 @@
  * Adds preprocessors to the menu theming functions
  * that will add dynamic expansion to their menus.
  */
-global $arrFileEncode;
-$arrFileEncode=array(
-    1 => 'UTF-8',
-    2 => 'Windows-1251',
-);
 /**
 * Valid permissions for this module
 * @return array An array of valid permissions for the onthisdate module
@@ -180,4 +175,11 @@ function _tmr_isset_var(&$var, $newVal = false){
 		$var = $newVal;
 	}
 	return $var;
+}
+
+function _tmr_get_arr_encode(){
+    return array(
+        1 => 'UTF-8',
+        2 => 'Windows-1251',
+    );
 }

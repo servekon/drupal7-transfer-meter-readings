@@ -1,12 +1,8 @@
 <?php
-// $Id: transfer_meter_readings.admin.inc,v 1.5.2.3 2008/11/08 17:35:12 arancaytar Exp $
-
 /**
  * @file transfer_meter_readings.admin.inc
  * Functions that are only called on the admin pages.
  */
-$minMoth = '';
-$cMon = '';
 
 /*
  * Export meter readings form
@@ -29,7 +25,8 @@ function transfer_meter_readings_export_form($form, &$form_state){
 	return $form;
 }
 function transfer_meter_readings_export_form_submit($form, &$form_state) {
-	global $user,$arrFileEncode;
+	global $user;
+    $arrFileEncode = _tmr_get_arr_encode();
 	
     $query = db_select('tmr_new_readings', 'nr')
     ->fields('nr');
@@ -868,7 +865,7 @@ function tmr_conf_del_field_form_submit($form, &$form_state){
  * Seettings of files format
  * */
 function tmr_settings_form($form, &$form_state){
-	global $arrFileEncode;
+	$arrFileEncode = _tmr_get_arr_encode();
     $form['group_settings'] = array(
 		'#type' => 'vertical_tabs',
 	);
