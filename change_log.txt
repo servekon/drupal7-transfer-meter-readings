@@ -1,0 +1,3 @@
+Version 1.0.1:
+-Added saving address data to cookies;
+-Fix permission error.

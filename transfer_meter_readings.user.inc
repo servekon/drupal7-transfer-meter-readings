@@ -144,32 +144,32 @@ function transfer_meter_readings_step_one_form($form, &$form_state){
         'event' => 'change',
         'method' => 'replace',
       ),
-      '#default_value' => !empty($form_state['values']['tmr_street']) ? $form_state['values']['tmr_street'] : NULL,
+      '#default_value' => _tmr_isset_var($form_state['values']['tmr_street'], _tmr_isset_var($_COOKIE['Drupal_visitor_tmr_street'], NULL)),
     );
-    $selected = isset($form_state['values']['tmr_street']) ? $form_state['values']['tmr_street'] : 0;
+    
+    $selected = (int)_tmr_isset_var($form_state['values']['tmr_street'], _tmr_isset_var($_COOKIE['Drupal_visitor_tmr_street']));
+    
     $form['tmr_house'] = array(
       '#type' => 'select',
       '#title' => t('Number of house'),
       '#prefix' => '<div id="rmr-house-wrapper">', '#suffix' => '</div>',
       '#required' => TRUE,
       '#options' => _tmr_get_house($selected),
-      '#default_value' => !empty($form_state['values']['tmr_house']) ? $form_state['values']['tmr_house'] : NULL,
+      '#default_value' => _tmr_isset_var($form_state['values']['tmr_house'], _tmr_isset_var($_COOKIE['Drupal_visitor_tmr_house'], NULL)),
     );
     
     $form['flat_num'] = array(
       '#type' => 'textfield',
       '#title' => t('Apartment number'),
       '#required' => TRUE,
-      '#default_value' => !empty($form_state['values']['flat_num']) ? $form_state['values']['flat_num'] : '',
-      #size' => '10'
+      '#default_value' => _tmr_isset_var($form_state['values']['flat_num'], _tmr_isset_var($_COOKIE['Drupal_visitor_flat_num'], '')),
     );
     
     $form['account'] = array(
       '#type' => 'textfield',
       '#title' => t('Personal account number'),
       '#required' => TRUE,
-      '#default_value' => !empty($form_state['values']['account']) ? $form_state['values']['account'] : '',
-      #size' => '10'
+      '#default_value' => _tmr_isset_var($form_state['values']['Drupal_visitor_account'], _tmr_isset_var($_COOKIE['Drupal_visitor_account'])),
     );
     
     $form['accept_private'] = array(
@@ -289,6 +289,9 @@ function transfer_meter_readings_send_readings_form_validate($form, &$form_state
   if(!isset($form_state['values']['submit']) or !isset($form_state['input']['nr_met_new_val'])){
     form_error($form, t("Meter readings were not included."));
   }
+  if(!isset($form_state['input']['nr_met_new_val'])){
+    return false;
+  }
   foreach($form_state['input']['nr_met_new_val'] as $key=>$val){
     if(!empty($val)){
       if (preg_match("/[^.\d]/i", $val)) {
@@ -313,6 +316,13 @@ function transfer_meter_readings_send_readings_form_submit($form, &$form_state){
   $form_state['step_forms'][$step]['stored_values'] = $form_state['values'];
   $isFloat = variable_get('tmr_is_ceil_meter_readings', 0);
   $count = sizeof($form_state['input']['nr_met_new_val']);
+  
+  $firstStep = $form_state['step_forms'][1]['stored_values'];
+
+  if(user_is_anonymous()) {
+    user_cookie_save(array_intersect_key($firstStep, array_flip(array('account', 'tmr_street', 'tmr_house', 'flat_num'))));
+  }
+  
   foreach($form_state['input']['nr_met_new_val'] as $key=>$val){
     if($form_state['values']['nr_block['.$key.']'] > 0){
       $count--;

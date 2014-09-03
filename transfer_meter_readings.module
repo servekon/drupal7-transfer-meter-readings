@@ -168,13 +168,18 @@ function transfer_meter_readings_theme() {
 }
 
 function _tmr_isset_var(&$var, $newVal = false){
-  if(!isset($var)){
-    $var = '';
+  if(isset($var)){
+    return $var;
   }
-  if($newVal and isset($var) and empty($var)){
-    $var = $newVal;
+  elseif(!isset($var) and $newVal == NULL){
+    return NULL;
   }
-  return $var;
+  elseif(!isset($var) and !$newVal){
+    return '';
+  }
+  elseif($newVal){
+    return $newVal;
+  }
 }
 
 function _tmr_get_arr_encode(){
