@@ -367,7 +367,7 @@ function transfer_meter_readings_send_readings_form_submit($form, &$form_state){
       }
       catch(Exception $e){
         watchdog_exception('rmr-error', $e);
-        drupal_set_message(t("Meter readings were not included.").t('More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+        drupal_set_message(t('Meter readings were not included.'), 'error', FALSE); return false;
       }
     }
   }

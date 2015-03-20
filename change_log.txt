@@ -1,3 +1,6 @@
-Version 1.0.1:
+Version 1.0.2
+-Fixed incorrect use watchdog() and t() functions;
+
+Version 1.0.1
 -Added saving address data to cookies;
 -Fix permission error.

@@ -104,7 +104,7 @@ function transfer_meter_readings_export_form_submit($form, &$form_state) {
     unset($values,$key,$val);
   }
   unset($rKey,$rVal);
-  watchdog('rmr-info', 'Export meter readings #'.$filename.' completed. Reception meter readings was <strong>'.$user->name.'</strong> at '.date('d.m.Y H:m:s'));
+  watchdog('rmr-info', 'Export meter readings #%filename completed. Reception meter readings was <strong>%user</strong> at %date.', array('%filename' => $filename, '%user' => $user->name, '%date' => format_date(REQUEST_TIME, 'short')));
   fclose($fp);
   
   try{
@@ -113,11 +113,11 @@ function transfer_meter_readings_export_form_submit($form, &$form_state) {
     ->condition('nr_id', $keysArr, 'IN')
     ->condition('nr_block', 1)
     ->execute();
-    watchdog('rmr-info', 'Export meters file completed.Reception meter readings was <strong>'.$user->name.'</strong> at '.date('d.m.Y h:m:s'));
+    watchdog('rmr-info', 'Export meters file completed. Reception meter readings was <strong>%user</strong> at %date.', array('%user' => $user->name, '%date' => format_date(REQUEST_TIME, 'short')));
   }
   catch(Exception $e){
     watchdog_exception('rmr-error', $e);
-    drupal_set_message(t('Error. More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+    drupal_set_message('Error. More information in '.l('syslog','admin/reports/dblog').'.<br />'.$e->getMessage(), 'error', FALSE); return false;
   }
   drupal_exit();
 }
@@ -132,6 +132,7 @@ function _tmr_translate_col(&$item, $key, $opt){
     $item =  preg_replace('/_/', ' ', $item);
     $item =  ucfirst($item);
     if(variable_get('tmr_export_translate_columns', 0) > 0){
+      $item = check_plain($item);
       $item = t($item);
     }
   }
@@ -183,7 +184,7 @@ function transfer_meter_readings_unblock_readings_submit(){
   }
   catch(Exception $e){
     watchdog_exception('rmr-error', $e);
-    drupal_set_message(t('Error. More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+    drupal_set_message('Error. More information in '.l('syslog','admin/reports/dblog').'.<br />'.$e->getMessage(), 'error', FALSE); return false;
   }
 }
 
@@ -370,7 +371,7 @@ function transfer_meter_readings_unblock_single($id){
   }
   catch(Exception $e){
     watchdog_exception('rmr-error', $e);
-    drupal_set_message(t('Error. More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+    drupal_set_message('Error. More information in '.l('syslog','admin/reports/dblog').'.<br />'.$e->getMessage(), 'error', FALSE); return false;
   }
   
   $form = drupal_get_form('transfer_meter_readings_blocking_single_form', $id);
@@ -402,7 +403,7 @@ function transfer_meter_readings_blocking_single($id){
   }
   catch(Exception $e){
     watchdog_exception('rmr-error', $e);
-    drupal_set_message(t('Error. More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+    drupal_set_message('Error. More information in '.l('syslog','admin/reports/dblog').'.<br />'.$e->getMessage(), 'error', FALSE); return false;
   }
   $form = drupal_get_form('transfer_meter_readings_unblock_single_form', $id);
   $output = drupal_render($form);
@@ -574,7 +575,7 @@ function _tmr_fill_handbook_housing_stock(){
   }
   catch(Exception $e){
     watchdog_exception('rmr-error', $e);
-    drupal_set_message(t('When filling in the address directory, an error occurred. More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+    drupal_set_message(t('When filling in the address directory, an error occurred'). 'More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
   }
   return true;
 }
