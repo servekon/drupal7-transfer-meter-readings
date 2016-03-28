@@ -1,5 +1,5 @@
 Version 1.0.3
--Fixed few errors. Thank's Andrey Nebaev eropnd@gmail.com;
+-Fixed few errors. Thanks Andrey Nebaev eropnd@gmail.com;
 
 Version 1.0.2
 -Fixed incorrect use watchdog() and t() functions;
