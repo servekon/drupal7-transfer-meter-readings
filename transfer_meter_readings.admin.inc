@@ -575,7 +575,7 @@ function _tmr_fill_handbook_housing_stock(){
   }
   catch(Exception $e){
     watchdog_exception('rmr-error', $e);
-    drupal_set_message(t('When filling in the address directory, an error occurred'). 'More information in '.l('syslog','admin/reports/dblog').'.').'<br />'.$e->getMessage(), 'error', FALSE); return false;
+    drupal_set_message(t('When filling in the address directory, an error occurred').' More information in '.l('syslog','admin/reports/dblog').'.<br />'.$e->getMessage(), 'error', FALSE); return false;
   }
   return true;
 }

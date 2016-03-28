@@ -15,8 +15,6 @@ foreach($meters as $key=>$val){
     break;
   }
 
-  $date_change = (!empty(strtotime($val->date_change))) ? strtotime($val->date_change) : 0;
-  
   $rows[]=array('data' => array(
       $i,
       l($val->nr_account,'admin/transfer-meter-readings/readings/show-from-user/1/'.$val->nr_account),
