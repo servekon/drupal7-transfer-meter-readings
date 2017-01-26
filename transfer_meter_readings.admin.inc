@@ -451,7 +451,6 @@ function transfer_meter_readings_import_form($form=array(), &$form_state){
     '#href' => 'admin/transfer-meter-readings/import',
     '#weight' => 11,
   );
-  
   return $form;
 }
 
@@ -661,7 +660,6 @@ function theme_tmr_conf_manage_fields_form($variables) {
   $output .= drupal_render_children($form);
 
   drupal_add_tabledrag($table_id, 'order', 'sibling', 'rmr-field-weight');
-
   return $output;
 }
 

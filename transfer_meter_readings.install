@@ -198,11 +198,11 @@ function transfer_meter_readings_schema() {
       ),
     ),
     'indexes' => array(
-      'md_order_id'=>array('md_order_id'),
-      'md_account'=>array('md_account'),
-      'md_st_key'=>array('md_st_key'),
-      'md_house_key'=>array('md_house_key'),
-      'md_met_num'=>array('md_met_num'),
+      'md_order_id' => array('md_order_id'),
+      'md_account' => array('md_account'),
+      'md_st_key' => array('md_st_key'),
+      'md_house_key' => array('md_house_key'),
+      'md_met_num' => array('md_met_num'),
     ),
     'primary key' => array('md_id')
   );
@@ -306,13 +306,13 @@ function transfer_meter_readings_schema() {
       ),
     ),
     'indexes' => array(
-      'nr_account'=>array('nr_account'),
-      'nr_order_id'=>array('nr_order_id'),
-      'nr_st_key'=>array('nr_st_key'),
-      'nr_house_key'=>array('nr_house_key'),
-      'nr_met_num'=>array('nr_met_num'),
-      'nr_block'=>array('nr_block'),
-      'nr_met_val'=>array('nr_block'),
+      'nr_account' => array('nr_account'),
+      'nr_order_id' => array('nr_order_id'),
+      'nr_st_key' => array('nr_st_key'),
+      'nr_house_key' => array('nr_house_key'),
+      'nr_met_num' => array('nr_met_num'),
+      'nr_block' => array('nr_block'),
+      'nr_met_val' => array('nr_met_val'),
     ),
     'primary key' => array('nr_id')
   );
@@ -358,10 +358,10 @@ function transfer_meter_readings_schema() {
       ),
     ),
     'indexes' => array(
-      'hhs_st_key'=>array('hhs_st_key'),
-      'hhs_house_key'=>array('hhs_house_key'),
-      'hhs_st_name'=>array('hhs_st_name'),
-      'hhs_hs_house'=>array('hhs_hs_house'),
+      'hhs_st_key' => array('hhs_st_key'),
+      'hhs_house_key' => array('hhs_house_key'),
+      'hhs_st_name' => array('hhs_st_name'),
+      'hhs_hs_house' => array('hhs_hs_house'),
     ),
     'primary key' => array('hhs_id')
   );
@@ -402,10 +402,21 @@ function transfer_meter_readings_schema() {
       ),
     ),
     'indexes' => array(
-      'f_weight'=>array('f_weight'),
+      'f_weight' => array('f_weight'),
     ),
     'primary key' => array('f_id')
   );
   
   return $schema;
+}
+
+/**
+ * Rebuild index 'nr_met_val' for table 'tmr_new_readings'.
+ */
+function transfer_meter_readings_update_7101(){
+  //Version 1.0.4
+  if(db_index_exists('tmr_new_readings', 'nr_met_val')){
+    db_drop_index('tmr_new_readings', 'nr_met_val');
+    db_add_index('tmr_new_readings', 'nr_met_val', array('nr_met_val'));
+  }
 }

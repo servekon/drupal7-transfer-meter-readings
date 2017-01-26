@@ -8,7 +8,7 @@ function transfer_meter_readings_form(){
 }
 
 /**
- * List steps for the payment form
+ * List steps for the meter readings form
  * */
 function _transfer_meter_readings_form_steps(){
   return array(
@@ -169,7 +169,7 @@ function transfer_meter_readings_step_one_form($form, &$form_state){
       '#type' => 'textfield',
       '#title' => t('Personal account number'),
       '#required' => TRUE,
-      '#default_value' => _tmr_isset_var($form_state['values']['Drupal_visitor_account'], _tmr_isset_var($_COOKIE['Drupal_visitor_account'])),
+      '#default_value' => _tmr_isset_var($form_state['values']['account'], _tmr_isset_var($_COOKIE['Drupal_visitor_account'])),
     );
     
     $form['accept_private'] = array(
@@ -220,7 +220,6 @@ function transfer_meter_readings_step_two_form($form=array(), &$form_state){
         $form['rows'][$key]['#prefix'] .= '<th>'.implode('</th><th>', $header).'</th></tr><tr>';
       }
       foreach($arr as $tCol=>$vCol){
-        $newVal = (isset($form_state['input']['nr_met_new_val'][$key])) ? check_plain($form_state['input']['nr_met_new_val'][$key]) : check_plain($vCol);
         switch($tCol){
           case 'md_met_num':
           case 'md_met_name':
@@ -240,6 +239,8 @@ function transfer_meter_readings_step_two_form($form=array(), &$form_state){
             $form['rows'][$tCol.'['.$key.']']['#value'] = $vCol;
           break;
           case 'nr_met_new_val':
+            $newVal = (isset($form_state['input']['nr_met_new_val'][$key])) ? check_plain($form_state['input']['nr_met_new_val'][$key]) : check_plain($vCol);
+            
             $form['rows'][$key][$tCol.'['.$key.']']['#type'] = 'textfield';
             $form['rows'][$key][$tCol.'['.$key.']']['#default_value'] = $newVal;
             $form['rows'][$key][$tCol.'['.$key.']']['#prefix'] = '<td width="16%">';
