@@ -255,7 +255,7 @@ msgstr ""
 
 #: transfer_meter_readings.admin.inc:885
 msgid "Don't show the number of personal account"
-msgstr ""
+msgstr "Не показывать столбец с номером ЛС"
 
 #: transfer_meter_readings.admin.inc:892
 msgid "Round meter readings to the nearest whole number"

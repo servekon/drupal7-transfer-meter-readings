@@ -65,7 +65,7 @@ function transfer_meter_readings_install() {
       'f_weight' => 12,
     ),
     array(
-      'f_title' => 'Calibration date',
+      'f_title' => 'Date of calibration',
       'f_user_field' => 'md_date_check',
       'f_weight' => 14,
     ),
