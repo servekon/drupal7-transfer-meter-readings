@@ -3,6 +3,6 @@ description = Transfer of meter readings for anonymous users.
 configure = admin/transfer-meter-readings/settings
 
 core = 7.x
-version = "7.x-1.0.4"
+version = "7.x-1.0.5"
 
 stylesheets[all][] = css/tmr.css

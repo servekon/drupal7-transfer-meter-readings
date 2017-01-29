@@ -1,3 +1,10 @@
+Version 1.0.5
+-Added fields 'md_date_value' and 'md_date_check' to the 'tmr_main_data' table. 
+ For work with this fields need 2 actions:
+  1. Add the fields on page 'admin/transfer-meter-readings/settings/fields';
+  2. On page 'admin/transfer-meter-readings/settings' check one of the checkboxes "Show date of transmission of recent readings" and "Show date of calibration of meter".
+-Added ability to hide of column with personal account number;
+
 Version 1.0.4
 -Replaced wrong index for column 'nr_met_val' in the table 'tmr_new_readings'.
  It was the duplicate of index for field 'nr_block'. Copy/Paste bug:)

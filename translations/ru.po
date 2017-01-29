@@ -13,7 +13,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 7.x-1.0.2\n"
+"Project-Id-Version: 7.x-1.0.5\n"
 "POT-Creation-Date: 2015-03-20 22:07+0300\n"
 "PO-Revision-Date: 2015-03-20 22:07+0300\n"
 "Last-Translator: Konstantin Lukas <servekon@yahoo.com>\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "Unload counter readings"
 msgstr "Выгрузить показания счетчиков"
 
-#: transfer_meter_readings.admin.inc:46;177 transfer_meter_readings.user.inc:400 templates/admin_transfer_meter_readings.tpl.php:41
+#: transfer_meter_readings.admin.inc:46;178 transfer_meter_readings.user.inc:449 templates/admin_transfer_meter_readings.tpl.php:39
 msgid "No data."
 msgstr "Данных нет."
 
@@ -52,105 +52,105 @@ msgstr "Новое"
 msgid "Previously unloaded"
 msgstr "Ранее выгруженный"
 
-#: transfer_meter_readings.admin.inc:149
+#: transfer_meter_readings.admin.inc:150
 msgid "Are you sure you want to unlock meter readings?"
 msgstr ""
 "Вы действительно хотите "
 "разблокировать все показания "
 "счетчиков?"
 
-#: transfer_meter_readings.admin.inc:150
+#: transfer_meter_readings.admin.inc:151
 msgid "After unlocking will be available to unload all the previously listed indications."
 msgstr ""
 "После разблокировки, для выгрузки "
 "станут доступны все ранее занесенные "
 "показания."
 
-#: transfer_meter_readings.admin.inc:156;818
+#: transfer_meter_readings.admin.inc:157;817
 msgid "Yes"
 msgstr "Да"
 
-#: transfer_meter_readings.admin.inc:162;238;449;763;823;835
+#: transfer_meter_readings.admin.inc:163;239;450;762;822;834
 msgid "Cancel"
 msgstr "Отменить"
 
-#: transfer_meter_readings.admin.inc:180
+#: transfer_meter_readings.admin.inc:181
 msgid "Meter readings ublocked."
 msgstr "Показания счетчиков разблокированы."
 
-#: transfer_meter_readings.admin.inc:203;211;233
+#: transfer_meter_readings.admin.inc:204;212;234
 msgid "Filter"
 msgstr "Фильтр"
 
-#: transfer_meter_readings.admin.inc:213;262 transfer_meter_readings.user.inc:170;210
+#: transfer_meter_readings.admin.inc:214;263 transfer_meter_readings.user.inc:170;205
 msgid "Personal account number"
 msgstr "Номер ЛС"
 
-#: transfer_meter_readings.admin.inc:214
+#: transfer_meter_readings.admin.inc:215
 msgid "Name of meter"
 msgstr "Имя счетчика"
 
-#: transfer_meter_readings.admin.inc:215
+#: transfer_meter_readings.admin.inc:216
 msgid "Only new meter readings"
 msgstr "Только новые показания счетчиков"
 
-#: transfer_meter_readings.admin.inc:223
+#: transfer_meter_readings.admin.inc:224
 msgid "Search"
 msgstr "Поиск"
 
-#: transfer_meter_readings.admin.inc:263
+#: transfer_meter_readings.admin.inc:264
 msgid "Home address"
 msgstr "Адрес"
 
-#: transfer_meter_readings.admin.inc:264
+#: transfer_meter_readings.admin.inc:265
 msgid "Name"
 msgstr "Имя"
 
-#: transfer_meter_readings.admin.inc:265 transfer_meter_readings.user.inc:210
+#: transfer_meter_readings.admin.inc:266 transfer_meter_readings.user.inc:205
 msgid "Meter number"
 msgstr "Номер счетчика"
 
-#: transfer_meter_readings.admin.inc:266 transfer_meter_readings.user.inc:210
+#: transfer_meter_readings.admin.inc:267 transfer_meter_readings.user.inc:205
 msgid "Counter Name"
 msgstr "Имя счетчика"
 
-#: transfer_meter_readings.admin.inc:267 transfer_meter_readings.user.inc:210
+#: transfer_meter_readings.admin.inc:268 transfer_meter_readings.user.inc:205
 msgid "Counter type"
 msgstr "Тип счетчика"
 
-#: transfer_meter_readings.admin.inc:268 transfer_meter_readings.user.inc:210
+#: transfer_meter_readings.admin.inc:269 transfer_meter_readings.user.inc:220
 msgid "Previous reading"
 msgstr "Предыдущее показание"
 
-#: transfer_meter_readings.admin.inc:269 transfer_meter_readings.user.inc:210
+#: transfer_meter_readings.admin.inc:270 transfer_meter_readings.user.inc:220
 msgid "New indications"
 msgstr "Новые показания"
 
-#: transfer_meter_readings.admin.inc:320;327
+#: transfer_meter_readings.admin.inc:321;328
 msgid "Unblock"
 msgstr "Разблокировать"
 
-#: transfer_meter_readings.admin.inc:322
+#: transfer_meter_readings.admin.inc:323
 msgid "For user"
 msgstr "Для жителя"
 
-#: transfer_meter_readings.admin.inc:322
+#: transfer_meter_readings.admin.inc:323
 msgid "For re-export"
 msgstr "Для реэкспорта"
 
-#: transfer_meter_readings.admin.inc:347
+#: transfer_meter_readings.admin.inc:348
 msgid "Block up"
 msgstr "Блокировать"
 
-#: transfer_meter_readings.admin.inc:428
+#: transfer_meter_readings.admin.inc:429
 msgid "Choose a file"
 msgstr "Выберите файл"
 
-#: transfer_meter_readings.admin.inc:435
+#: transfer_meter_readings.admin.inc:436
 msgid "Re-create a temporary table"
 msgstr "Пересоздать временную таблицу"
 
-#: transfer_meter_readings.admin.inc:443
+#: transfer_meter_readings.admin.inc:444
 msgid "Save and continue"
 msgstr "Сохранить и продолжить"
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Удалить"
 
-#: transfer_meter_readings.admin.inc:610;646;751
+#: transfer_meter_readings.admin.inc:610;646;750
 msgid "Weight"
 msgstr "Вес"
 
@@ -188,11 +188,11 @@ msgstr "Вес"
 msgid "Save settings"
 msgstr "Сохранить настройки"
 
-#: transfer_meter_readings.admin.inc:646;737
+#: transfer_meter_readings.admin.inc:646;736
 msgid "Field of main data table"
 msgstr "Поле таблицы с основными данными"
 
-#: transfer_meter_readings.admin.inc:646;744
+#: transfer_meter_readings.admin.inc:646;743
 msgid "Title"
 msgstr "Заголовок"
 
@@ -204,48 +204,48 @@ msgstr "Действия"
 msgid "No fields."
 msgstr "Поля еще не добавлены."
 
-#: transfer_meter_readings.admin.inc:717;787;853
+#: transfer_meter_readings.admin.inc:716;786;852
 msgid "Error"
 msgstr "Ошибка"
 
-#: transfer_meter_readings.admin.inc:721
+#: transfer_meter_readings.admin.inc:720
 msgid "No available fields."
 msgstr "Доступных полей нет."
 
-#: transfer_meter_readings.admin.inc:759 transfer_meter_readings.module:124
+#: transfer_meter_readings.admin.inc:758 transfer_meter_readings.module:124
 msgid "Add field"
 msgstr "Добавить поле"
 
-#: transfer_meter_readings.admin.inc:783
+#: transfer_meter_readings.admin.inc:782
 msgid "Field added."
 msgstr "Поле добавлено."
 
-#: transfer_meter_readings.admin.inc:813
+#: transfer_meter_readings.admin.inc:812
 msgid "Do you want to remove a field \"%field\"?"
 msgstr ""
 "Вы действительно хотите удалить поле "
 "\"%field\"?"
 
-#: transfer_meter_readings.admin.inc:830
+#: transfer_meter_readings.admin.inc:829
 msgid "Field not found."
 msgstr "Поле не найдено."
 
-#: transfer_meter_readings.admin.inc:849
+#: transfer_meter_readings.admin.inc:848
 msgid "Field deleted."
 msgstr "Поле удалено."
 
-#: transfer_meter_readings.admin.inc:869
+#: transfer_meter_readings.admin.inc:868
 msgid "Input settings"
 msgstr "Настройки ввода показаний"
 
-#: transfer_meter_readings.admin.inc:878
+#: transfer_meter_readings.admin.inc:877
 msgid "The maximum possible difference between the previous and the current counter value"
 msgstr ""
 "Максимально возможная разница между "
 "предыдущим и текущим показанием "
 "счетчика"
 
-#: transfer_meter_readings.admin.inc:879
+#: transfer_meter_readings.admin.inc:878
 msgid "Set \"0\" to not use validation volume difference between the current and previous meter readings"
 msgstr ""
 "Поставьте значение \"0\" чтобы не "
@@ -253,55 +253,67 @@ msgstr ""
 "объемов между текущими и предыдущими "
 "показаниями счетчика"
 
-#: transfer_meter_readings.admin.inc:886
+#: transfer_meter_readings.admin.inc:885
+msgid "Don't show the number of personal account"
+msgstr ""
+
+#: transfer_meter_readings.admin.inc:892
 msgid "Round meter readings to the nearest whole number"
 msgstr ""
 "Округлять показания счетчиков до "
 "целого числа"
 
-#: transfer_meter_readings.admin.inc:893
+#: transfer_meter_readings.admin.inc:899
+msgid "Show date of transmission of recent readings"
+msgstr "Показывать дату передачи предыдущих показаний"
+
+#: transfer_meter_readings.admin.inc:906
+msgid "Show date of calibration of meter"
+msgstr "Показывать дату поверки счетчика"
+
+#: transfer_meter_readings.admin.inc:913
 msgid "Import settings"
 msgstr "Настройки импорта"
 
-#: transfer_meter_readings.admin.inc:902
+#: transfer_meter_readings.admin.inc:922
 msgid "The field separator"
 msgstr "Разделитель полей"
 
-#: transfer_meter_readings.admin.inc:917
+#: transfer_meter_readings.admin.inc:937
 msgid "The fields are enclosed in"
 msgstr "Поля заключены в"
 
-#: transfer_meter_readings.admin.inc:921
+#: transfer_meter_readings.admin.inc:941
 msgid "Single quote"
 msgstr "Одинарная кавычка"
 
-#: transfer_meter_readings.admin.inc:922
+#: transfer_meter_readings.admin.inc:942
 msgid "Double quote"
 msgstr "Двойная кавычка"
 
-#: transfer_meter_readings.admin.inc:929
+#: transfer_meter_readings.admin.inc:949
 msgid "The escape character"
 msgstr "Символ экранирования"
 
-#: transfer_meter_readings.admin.inc:940
+#: transfer_meter_readings.admin.inc:960
 msgid "Line separator"
 msgstr "Символ разделения строк"
 
-#: transfer_meter_readings.admin.inc:953
+#: transfer_meter_readings.admin.inc:973
 msgid "Export settings"
 msgstr "Настройки экспорта"
 
-#: transfer_meter_readings.admin.inc:962
+#: transfer_meter_readings.admin.inc:982
 msgid "Add in the first row the name of columns"
 msgstr ""
 "Добавлять в первую строку файла "
 "названия столбцов"
 
-#: transfer_meter_readings.admin.inc:969
+#: transfer_meter_readings.admin.inc:989
 msgid "Translate column names"
 msgstr "Переводить названия столбцов"
 
-#: transfer_meter_readings.admin.inc:984
+#: transfer_meter_readings.admin.inc:1004
 msgid "File encoding"
 msgstr "Кодировка файла"
 
@@ -351,49 +363,61 @@ msgstr ""
 "Я согласен на передачу и обработку "
 "моих персональных данных"
 
-#: transfer_meter_readings.user.inc:186;281
+#: transfer_meter_readings.user.inc:186;330
 msgid "An error occurred."
 msgstr "Произошла ошибка."
 
-#: transfer_meter_readings.user.inc:269
+#: transfer_meter_readings.user.inc:213
+msgid "Date of calibration"
+msgstr "Дата поверки"
+
+#: transfer_meter_readings.user.inc:217
+msgid "Date of transmission of recent readings"
+msgstr "Дата передачи предыдущих показаний"
+
+#: transfer_meter_readings.user.inc:259
+msgid "For the meter %name is required to produce calibration."
+msgstr "Для счетчика %name необходимо произвести поверку."
+
+#: transfer_meter_readings.user.inc:318
 msgid "Make statements"
 msgstr "Внести показания"
 
-#: transfer_meter_readings.user.inc:275
+#: transfer_meter_readings.user.inc:324
 msgid "All previously entered readings have been transferred to the processing."
 msgstr ""
 "Все ранее введенные показания были "
 "переданы на обработку."
 
-#: transfer_meter_readings.user.inc:290;370
+#: transfer_meter_readings.user.inc:339;419
 msgid "Meter readings were not included."
 msgstr ""
 "При внесении новых показаний "
 "произошла ошибка."
 
-#: transfer_meter_readings.user.inc:298
+#: transfer_meter_readings.user.inc:347
 msgid "Field %field can be only digits and dot."
 msgstr ""
 "Поле %field может содержать только цифры "
 "и знак точки."
 
-#: transfer_meter_readings.user.inc:298
+#: transfer_meter_readings.user.inc:347
 msgid "''New indications''"
 msgstr "''Новые показания''"
 
-#: transfer_meter_readings.user.inc:301
+#: transfer_meter_readings.user.inc:350
 msgid "Current counter value is less than the previous."
 msgstr ""
 "Текущее показание счетчика меньше "
 "предыдущего."
 
-#: transfer_meter_readings.user.inc:305
+#: transfer_meter_readings.user.inc:354
 msgid "The difference between the previous and the current counter value is too high."
 msgstr ""
 "Разница между текущим и предыдущим "
 "показанием счетчика слишком велика."
 
-#: transfer_meter_readings.user.inc:366
+#: transfer_meter_readings.user.inc:415
 msgid "Meter readings were made."
 msgstr "Новые показания были внесены."
 
@@ -437,7 +461,7 @@ msgstr "Разблокировать показания счетчиков"
 msgid "Import data"
 msgstr "Импорт данных"
 
-#: transfer_meter_readings.module:99 transfer_meter_readings.install:91
+#: transfer_meter_readings.module:99 transfer_meter_readings.install:101
 msgid "Settings"
 msgstr "Настройки"
 
@@ -461,7 +485,7 @@ msgstr "Показания счетчиков"
 msgid "Add the meter readings"
 msgstr "Внести показания счетчиков"
 
-#: transfer_meter_readings.install:91
+#: transfer_meter_readings.install:101
 msgid "You need to configure the fields of the imported file and configure format of files for import / export. Go to the "
 msgstr ""
 "Вам необходимо настроить "

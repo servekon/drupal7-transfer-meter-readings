@@ -133,7 +133,7 @@ function _tmr_translate_col(&$item, $key, $opt){
     $item =  ucfirst($item);
     if(variable_get('tmr_export_translate_columns', 0) > 0){
       $item = check_plain($item);
-      $item = t($item);
+      $item = t((string)$item);
     }
   }
   
@@ -880,11 +880,32 @@ function tmr_settings_form($form, &$form_state){
     '#default_value' => (int)variable_get('tmr_delta_meter_readings', 0),
   );
   
+  $form['tmr_main_fieldset']['tmr_not_show_account'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("Don't show the number of personal account"),
+    '#return_value' => 1, 
+    '#default_value' => (int)variable_get('tmr_not_show_account', 0),
+  );
+  
   $form['tmr_main_fieldset']['tmr_is_ceil_meter_readings'] = array(
     '#type' => 'checkbox',
     '#title' => t('Round meter readings to the nearest whole number'),
     '#return_value' => 1, 
     '#default_value' => (int)variable_get('tmr_is_ceil_meter_readings', 0),
+  );
+  
+  $form['tmr_main_fieldset']['tmr_show_date_value'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show date of transmission of recent readings'),
+    '#return_value' => 1, 
+    '#default_value' => (int)variable_get('tmr_show_date_value', 0),
+  );
+  
+  $form['tmr_main_fieldset']['tmr_show_date_check'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show date of calibration of meter'),
+    '#return_value' => 1, 
+    '#default_value' => (int)variable_get('tmr_show_date_check', 0),
   );
   
   $form['tmr_import_fieldset'] = array(

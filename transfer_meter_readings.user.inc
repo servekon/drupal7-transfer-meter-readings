@@ -193,11 +193,35 @@ function transfer_meter_readings_step_two_form($form=array(), &$form_state){
   $prevStep = $form_state['step']-1;
   $form_state['values']   = array_merge($form_state['values'],$form_state['step_forms'][$prevStep]['stored_values']);
   $account = $form_state['values']['account'];
+  $showAcc  = (int)variable_get('tmr_not_show_account', 0);
+  $showDateValue = (int)variable_get('tmr_show_date_value', 0);
+  $showDateCheck = (int)variable_get('tmr_show_date_check', 0);
   
   try{
+    $mdFields = array(
+      'md_id', 'md_order_id', 'md_month', 'md_account', 'md_st_key', 'md_house_key', 'md_flat',
+      'md_met_num', 'md_met_name', 'md_met_type',
+    );
+    $header = array(t('Personal account number'), t('Meter number'), t('Counter Name'), t('Counter type'));
+    //~ Hide number of personal account
+    if($showAcc == 1){
+      array_shift($header);
+    }
+    //~ Show additional fields
+    if($showDateCheck == 1){
+      $mdFields[] = 'md_date_check';
+      $header[] = t('Date of calibration');
+    }
+    if($showDateValue == 1){
+      $mdFields[] = 'md_date_value';
+      $header[] = t('Date of transmission of recent readings');
+    }
+    array_push($mdFields, 'md_met_val');
+    array_push($header, t('Previous reading'), t('New indications'));
+    
     $query = db_select('tmr_main_data', 'md');
     $query->leftJoin('tmr_new_readings', 'nr', 'md.md_account=nr.nr_account and md.md_met_num = nr.nr_met_num');
-    $query->fields('md', array('md_id', 'md_order_id', 'md_month', 'md_account', 'md_st_key', 'md_house_key', 'md_flat', 'md_met_num', 'md_met_name', 'md_met_type', 'md_met_val'))
+    $query->fields('md', $mdFields)
     ->fields('nr', array('nr_met_new_val', 'nr_block'))
     ->condition('md.md_account', $account)
     ->orderBy('md.md_met_num', 'ASC')
@@ -207,9 +231,12 @@ function transfer_meter_readings_step_two_form($form=array(), &$form_state){
     
     $count = sizeof($result);
     
-    $header = array(t('Personal account number'), t('Meter number'), t('Counter Name'), t('Counter type'), t('Previous reading'), t('New indications'));
     $rows = array();
     $i=0;
+    $widthCol = floor(100/sizeof($header));
+    $datetime1 = date_create(date('Y-m-t', REQUEST_TIME));
+    $nextMonthDays = date('t', strtotime("first day of +1 month", REQUEST_TIME));
+    
     foreach($result as $key=>$val) {
       $arr = (array)$val;
       $form['rows'][$key] = array(
@@ -220,15 +247,36 @@ function transfer_meter_readings_step_two_form($form=array(), &$form_state){
         $form['rows'][$key]['#prefix'] .= '<th>'.implode('</th><th>', $header).'</th></tr><tr>';
       }
       foreach($arr as $tCol=>$vCol){
+        //~ Processing of variables with dates
+        if($tCol == 'md_date_value' || $tCol == 'md_date_check'){
+          if(strtotime($vCol)){
+            //~ Show warning when date of calibration of meter less than last day of the current month
+            //~ or the day of calibration meter will be in the next month from the current date
+            if($tCol == 'md_date_check'){
+              $datetime2 = date_create($vCol);
+              $interval = date_diff($datetime1, $datetime2);
+              if(intval($interval->format('%r%a')) <= $nextMonthDays){
+                drupal_set_message(t('For the meter %name is required to produce calibration.', array('%name' => $result[$key]->md_met_name.' ('.$result[$key]->md_met_type.')')), 'warning');
+              }
+            }
+            $vCol = format_date(strtotime($vCol), 'custom', 'd.m.Y');
+          }
+        }
         switch($tCol){
           case 'md_met_num':
           case 'md_met_name':
           case 'md_met_type':
           case 'md_account':
           case 'md_met_val':
+          case 'md_date_value':
+          case 'md_date_check':
+            //~ Hide number of personal account
+            if($tCol == 'md_account' && $showAcc == 1){
+              break;
+            }
             $form['rows'][$key][$tCol.'['.$key.']']['#type'] = 'item';
             $form['rows'][$key][$tCol.'['.$key.']']['#markup'] = $vCol;
-            $form['rows'][$key][$tCol.'['.$key.']']['#prefix'] = '<td width="16%">';
+            $form['rows'][$key][$tCol.'['.$key.']']['#prefix'] = '<td width="'.$widthCol.'%">';
             $form['rows'][$key][$tCol.'['.$key.']']['#suffix'] = '</td>';
           break;
           case 'md_id':
@@ -243,7 +291,7 @@ function transfer_meter_readings_step_two_form($form=array(), &$form_state){
             
             $form['rows'][$key][$tCol.'['.$key.']']['#type'] = 'textfield';
             $form['rows'][$key][$tCol.'['.$key.']']['#default_value'] = $newVal;
-            $form['rows'][$key][$tCol.'['.$key.']']['#prefix'] = '<td width="16%">';
+            $form['rows'][$key][$tCol.'['.$key.']']['#prefix'] = '<td width="'.$widthCol.'%">';
             $form['rows'][$key][$tCol.'['.$key.']']['#suffix'] = '</td>';
             $form['rows'][$key][$tCol.'['.$key.']']['#size'] = 10;
             if(variable_get('tmr_is_ceil_meter_readings', 0) > 0){

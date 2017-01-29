@@ -59,6 +59,16 @@ function transfer_meter_readings_install() {
       'f_user_field' => 'md_month',
       'f_weight' => 11,
     ),
+    array(
+      'f_title' => 'Date of transmission of recent readings',
+      'f_user_field' => 'md_date_value',
+      'f_weight' => 12,
+    ),
+    array(
+      'f_title' => 'Calibration date',
+      'f_user_field' => 'md_date_check',
+      'f_weight' => 14,
+    ),
   );
   
   $query = db_insert('tmr_fields_table')->fields(array('f_title','f_user_field','f_weight','date_change'));
@@ -189,6 +199,18 @@ function transfer_meter_readings_schema() {
         'size' => 'normal',
         'not null' => TRUE,
         'description'=> "Current value of meter reading",
+      ),
+      'md_date_value' => array(
+        'type' => 'datetime',
+        'mysql_type' => 'date',
+        'not null' => FALSE,
+        'description'=> "Date of transmission of recent readings",
+      ),
+      'md_date_check' => array(
+        'type' => 'datetime',
+        'mysql_type' => 'date',
+        'not null' => FALSE,
+        'description'=> "Date of calibration",
       ),
       'date_change' => array(
         'type' => 'int',
@@ -418,5 +440,32 @@ function transfer_meter_readings_update_7101(){
   if(db_index_exists('tmr_new_readings', 'nr_met_val')){
     db_drop_index('tmr_new_readings', 'nr_met_val');
     db_add_index('tmr_new_readings', 'nr_met_val', array('nr_met_val'));
+  }
+}
+/**
+ * Adding fields 'md_date_value' and 'md_date_check' to the 'tmr_main_data' table.
+ */
+function transfer_meter_readings_update_7102(&$sandbox){
+  //Version 1.0.5
+  $schema = transfer_meter_readings_schema();
+  $schema = $schema['tmr_main_data']['fields'];
+  //~ Move field of "date_change" to the end of table
+  if(db_field_exists('tmr_main_data', 'date_change')){
+    db_drop_field('tmr_main_data', 'date_change');
+  }
+  //~ Adding new fields
+  if(!db_field_exists('tmr_main_data', 'md_date_value')){
+    db_add_field('tmr_main_data', 'md_date_value', $schema['md_date_value']);
+  }
+  if(!db_field_exists('tmr_main_data', 'md_date_check')){
+    db_add_field('tmr_main_data', 'md_date_check', $schema['md_date_check']);
+  }
+  //~ Re-create field and update the value for "current_timestamp"
+  if(!db_field_exists('tmr_main_data', 'date_change')){
+    db_add_field('tmr_main_data', 'date_change', $schema['date_change']);
+  }
+  db_update('tmr_main_data')->fields(array('date_change' => REQUEST_TIME))->execute();
+  if (module_exists('locale')) {
+    locale_system_update(array('transfer_meter_readings'));
   }
 }
